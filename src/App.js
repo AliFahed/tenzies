@@ -1,9 +1,13 @@
 import React from "react";
+import "./styles/style.css";
+import Game from "./components/Game";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Game />
+      <Footer />
     </div>
   );
 };
