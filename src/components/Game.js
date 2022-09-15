@@ -1,17 +1,22 @@
 import React from "react";
 import Die from "./Die";
+import { nanoid } from "nanoid";
 
 const Game = () => {
   const allNewDice = () => {
-    // return an array of 10 random number between 1 - 6
     const arr = [];
     const min = 1;
     const max = 6;
     let randomNum;
 
+    // generate 10 random numbers between 1 - 6
     for (let i = 1; i <= 10; i++) {
       randomNum = Math.floor(Math.random() * (max - min + 1) + min);
-      arr.push(randomNum);
+      arr.push({
+        value: randomNum,
+        isHeld: false,
+        id: nanoid(),
+      });
     }
 
     return arr;
@@ -23,7 +28,18 @@ const Game = () => {
     setDice(allNewDice());
   };
 
-  const diceElements = dice.map((die) => <Die value={die} />);
+  const holdDice = (id) => {
+    console.log(id);
+  };
+
+  const diceElements = dice.map((die) => (
+    <Die
+      key={die.id}
+      value={die.value}
+      isHeld={die.isHeld}
+      holdDice={() => holdDice(die.id)}
+    />
+  ));
 
   return (
     <main className="main">

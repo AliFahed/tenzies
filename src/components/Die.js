@@ -1,7 +1,15 @@
 import React from "react";
 
 const Die = (props) => {
-  return <div className="dice">{props.value}</div>;
+  const styles = {
+    background: props.isHeld ? "#59e391" : "#fff",
+  };
+
+  return (
+    <div className="dice" style={styles} onClick={props.holdDice}>
+      {props.value}
+    </div>
+  );
 };
 
 export default Die;
